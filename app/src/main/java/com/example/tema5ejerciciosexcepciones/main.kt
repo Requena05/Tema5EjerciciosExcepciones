@@ -242,8 +242,104 @@ excepción o no.*/
         }finally {
             println("Finalizo")
         }
-
         }
+    ejercicio20()
+    /*21. Infix Functions:
+Crea una clase Point con propiedades x e y. Implementa una función infix
+que calcule la distancia entre dos puntos*/
+    class Point(val x: Int, val y: Int){
+        infix fun distance(other: Point): Double {
+            val dx = this.x - other.x
+            val dy = this.y - other.y
+            return Math.sqrt((dx * dx + dy * dy).toDouble())
+        }
+        }
+    fun ejercicio21(){
+        val point1 = Point(1, 2)
+        val point2 = Point(4, 6)
+        val distance = point1 distance point2
+        println("La distancia entre los puntos es: $distance")
+    }
+    ejercicio21()
+    /*22. Lazy y Lateinit:
+Define una variable lazy que almacene la suma de dos números. La suma
+debe calcularse solo cuando se accede a la variable. Luego, usa lateinit para
+inicializar una variable de tipo String antes de asignarle un valor.
+*/
+    fun ejercicio22() {
+        val lazyValue: Int by lazy {
+            println("Calculando el valor perezoso...")
+            42
+        }
+        println("Valor perezoso: $lazyValue")
+    }
+    ejercicio22()
+    /*23. With:
+Utiliza la función with para configurar un objeto StringBuilder. Agrega tres
+líneas de texto al objeto y luego imprime el resultado.*/
+    fun ejercicio23(){
+        val stringBuilder = StringBuilder()
+        with(stringBuilder) {
+            append("Hola, ")
+            append("esto ")
+            append("es ")
+            append("un ")
+            append("ejemplo.")
+        }
+        println(stringBuilder.toString())
+    }
+    ejercicio23()
+    /*24. Apply:
+Crea una clase Person con propiedades como name, age, y address. Utiliza
+la función apply para construir una instancia de Person con valores
+específicos.
+*/
+    fun ejercicio24(){
+        class Person(val name: String, val age: Int, val address: String)
+        val person = Person("Juan", 30, "Calle Principal 123")
+        println("Nombre: ${person.name}, Edad: ${person.age}, Dirección: ${person.address}")
+
+    }
+    ejercicio24()
+    /*25. Run:
+Define una función calculateArea que toma la longitud y el
+ancho de un rectángulo y devuelve su área. Luego, utiliza run
+para imprimir el área de un rectángulo específico.
+*/
+    fun ejercicio25(){
+        fun calculateArea(length: Int, width: Int): Int {
+            return length * width
+        }
+        val area = calculateArea(5, 10)
+        println("El área del rectángulo es: $area")
+    }
+    ejercicio25()
+    /*26. Let:
+Declara una cadena nullable y utiliza la función let para
+imprimir su longitud solo si no es nula.*/
+    fun ejercicio26() {
+        var cadena: String? = null
+        cadena?.let {
+            println(it.length)
+        }
+    }
+    ejercicio26()
+/*27. Also:
+Crea una lista de números y utiliza la función also para
+imprimir un mensaje antes y después de aplicar una
+operación a cada elemento de la lista.*/
+    fun ejercicio27() {
+    val numbers = listOf(1, 2, 3, 4, 5)
+    numbers.also { println("Lista original: $it") }
+    val doubledNumbers = numbers.map { it * 2 }
+    doubledNumbers.also { println("Lista con duplicados: $it") }
+    val filteredNumbers = numbers.filter { it % 2 == 0 }
+    filteredNumbers.also { println("Lista filtrada: $it") }
+    val squaredNumbers = numbers.map { it * it }
+    squaredNumbers.also { println("Lista de cuadrados: $it") }
+}
+   ejercicio27()
+
 }
 
 
